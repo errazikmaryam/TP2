@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div(class="container mx-auto mt-10")
+    h2 Books
+    if user
+      p(class="mb-4") Welcome, #{user.username}!
+      a(href="/logout" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded") Logout
+      ul
+        each book in books
+          li= book.title + " by " + book.author
+    else
+      p(class="mb-4") Please log in to view books.
+      a(href="/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded") Login
+      a(href="/register" class="bg-blue-500 hoverbg-blue-700 text-white font-bold py-2 px-4 rounded") Register
